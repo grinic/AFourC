@@ -3,7 +3,7 @@ Software to analyze 4C data
 
 # Installation
 
-Download the repository, unsip the content and place the folder in your favorite location on the computer.
+Download the repository, unzip the content and place the folder in your favorite location on the computer.
 
 Make sure you have the Python package "fbs" installed on your machine. See for instance:
 https://github.com/mherrmann/fbs-tutorial
