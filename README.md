@@ -22,6 +22,6 @@ There are two ways of running the AFourC software:
 
 2. Open a command prompt and navigate to the folder "AFourC\Analysis4C\src\main\python", and type
 
-  ```
-  >>> python run_app.py
-  ```
+   ```
+   >>> python run_app.py
+   ```
