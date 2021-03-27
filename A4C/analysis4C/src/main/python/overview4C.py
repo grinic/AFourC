@@ -83,7 +83,7 @@ def plot_4C_overview(files, chromosome, viewpoints, _lims,
         color_profile = colors_profile[i]
 
         # extract 4C profile and peak data
-        _, data_peaks, viewpoint = viewer4C.compute_4C_interactions( file, chromosome, vp_region, _lims,
+        _, data_peaks, data_Zscore, viewpoint = viewer4C.compute_4C_interactions( file, chromosome, vp_region, _lims,
                                     close_contact_region=close_contact_region,
                                     seed=seed,
                                     windowSize=windowSize,
@@ -103,14 +103,19 @@ def plot_4C_overview(files, chromosome, viewpoints, _lims,
 
         lines = []
         gray_scales = []
+
+        j=0
         for d in data_peaks:
             # print(d,d[2]/float(d_max))
             gray_scales.append(d[2]/float(d_max))
             x, y = viewer4C.parabola(viewpoint, d[0])
             lines.append([x,y])
             if d[2]>d_min:
+                print('Int%d'%j,viewpoint,d[0],d[1],d[2],data_Zscore[j])
                 _ymax = np.max([_ymax,np.max(y)])
                 ax.plot(x,y,'-',lw=1.5,c=color_profile)
+
+            j+=1
         all_lines.append(lines)
         all_gray_scales.append(gray_scales)
         
@@ -157,6 +162,7 @@ def plot_4C_overview(files, chromosome, viewpoints, _lims,
                 if hit_back:
                     x,y = viewer4C.parabola(c1,c2)
                     _ymax = np.max([_ymax,np.max(y)])
+                    print('Mutual',c1, c2, (gs1+gs2)/2)
                     # print((gs1+gs2)/2)
                     ax.plot(x,y,'-',lw=2,c=cmap.to_rgba((gs1+gs2)/2))
 

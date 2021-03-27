@@ -11,7 +11,7 @@ from PyQt5.QtWidgets import (QApplication, QComboBox, QVBoxLayout,
         QFileDialog, QWidget, QMessageBox, QCheckBox,
         QSpinBox, QListView, QTreeView, QFileSystemModel,
         QAbstractItemView, QDialog)
-from fbs_runtime.application_context.PyQt5 import ApplicationContext
+# from fbs_runtime.application_context.PyQt5 import ApplicationContext
 import sys, warnings, os
 import viewer4C
 import overview4C
@@ -283,9 +283,9 @@ class app4C(QWidget):
     #     self.w.show()
         
 if __name__ == '__main__':
-    appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
+    appctxt = QApplication(sys.argv)       # 1. Instantiate ApplicationContext
     window = app4C()
     window.resize(400, 80)
     window.show()
-    exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
+    exit_code = appctxt.exec_()      # 2. Invoke appctxt.app.exec_()
     sys.exit(exit_code)
